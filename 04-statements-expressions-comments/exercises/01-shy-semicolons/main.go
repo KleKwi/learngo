@@ -17,6 +17,10 @@ package main
 //  2. Observe how Go fixes them for you
 //
 // ---------------------------------------------------------
+import "fmt"
 
 func main() {
+	fmt.Println("inanc")
+	fmt.Println("lina")
+	fmt.Println("ebru")
 }

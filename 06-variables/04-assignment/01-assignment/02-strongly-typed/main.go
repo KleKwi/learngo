@@ -18,13 +18,13 @@ package main
 
 func main() {
 	var speed int
-	// speed = "100"
+	speed = "100"
 
 	var running bool
-	// running = 1
+	running = 1
 
 	var force float64
-	// speed = force
+	speed = force
 
 	// Go automatically converts the typeless
 	//   integer literal to float64 automatically

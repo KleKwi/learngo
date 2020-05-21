@@ -8,8 +8,9 @@
 
 package main
 
-// Automatically imports!... AWESOME!
 import "github.com/inancgumus/learngo/05-write-your-first-library-package/printer"
+
+// Automatically imports!... AWESOME!
 
 func main() {
 	printer.Hello()

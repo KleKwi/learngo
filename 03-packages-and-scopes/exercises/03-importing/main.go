@@ -21,12 +21,14 @@ package main
 //  hi
 // ---------------------------------------------------------
 
-// ?
+import f "fmt"
+import m "fmt"
+import s "fmt"
 // ?
 // ?
 
 func main() {
-	// ?
-	// ?
-	// ?
+	f.Println("hello")
+	m.Println("hey")
+	s.Println("hi")
 }

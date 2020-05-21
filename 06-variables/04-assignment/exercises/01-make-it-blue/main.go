@@ -8,6 +8,10 @@
 
 package main
 
+import (
+	"fmt"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Make It Blue
 //
@@ -22,7 +26,9 @@ package main
 func main() {
 	// UNCOMMENT THE CODE BELOW:
 
-	// color := "green"
+	color := "green"
+	color = "blue"
+	fmt.Println(color)
 
 	// ADD YOUR CODE BELOW:
 

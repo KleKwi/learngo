@@ -8,6 +8,10 @@
 
 package main
 
+import (
+	"fmt"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Multi Assign #2
 //
@@ -28,11 +32,15 @@ package main
 func main() {
 	// UNCOMMENT THE CODE BELOW:
 
-	// var (
-	// 	planet string
-	// 	isTrue bool
-	// 	temp   float64
-	// )
+	var (
+		planet string
+		isTrue bool
+		temp   float64
+	)
+	planet, isTrue, temp = "Mars", true, 19.5
 
+	fmt.Println("Air is good on", planet)
+	fmt.Printf("It's %v\n", isTrue)
+	fmt.Printf("It is %v degrees\n", temp)
 	// ADD YOUR CODE BELOW
 }
