@@ -8,6 +8,10 @@
 
 package main
 
+import (
+	"fmt"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Print the Type #4
 //  Print the type and value of true using fmt.Printf
@@ -17,5 +21,5 @@ package main
 // ---------------------------------------------------------
 
 func main() {
-	// ?
+	fmt.Printf("Type of %t is %[1]T\n", true)
 }
