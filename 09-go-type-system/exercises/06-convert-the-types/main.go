@@ -46,8 +46,9 @@ func main() {
 
 	// ----------------------------------------
 	// DONT TOUCH THIS
+	celsius *= Celsius(celsiusDegree * Temperature(factor))
+	fahr *= Fahrenheit(fahrDegree * Temperature(factor))
 	fmt.Println(celsius, fahr)
 
 	// YOU MAY REMOVE THESE WHEN YOU'RE DONE
-	_, _, _ = celsiusDegree, fahrDegree, factor
 }
