@@ -8,8 +8,6 @@
 
 package main
 
-import "fmt"
-
 // ---------------------------------------------------------
 // EXERCISE: Comment out
 //

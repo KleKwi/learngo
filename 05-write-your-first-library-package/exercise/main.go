@@ -1,5 +1,5 @@
-package main
+// package main
 
-func main() {
-	fmt.Println(mygo.Version())
-}
+// func main() {
+// 	fmt.Println(mygo.Version())
+// }

@@ -1,7 +1,7 @@
-package mygo
+// package mygo
 
-import "runtime"
+// import "runtime"
 
-func Version() string {
-	return runtime.Version()
-}
+// func Version() string {
+// 	return runtime.Version()
+// }
