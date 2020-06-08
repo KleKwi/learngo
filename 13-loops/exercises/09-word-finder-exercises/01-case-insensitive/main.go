@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Case Insensitive Search
 //
@@ -24,5 +30,30 @@ package main
 //  the "lazy" keyword.
 // ---------------------------------------------------------
 
+const (
+	line = "lAZY cat wwW wEb sec whEre"
+)
+
 func main() {
+	words := strings.Fields(line)
+	querys := os.Args[1:]
+
+queries:
+	for _, q := range querys {
+		q = strings.ToLower(q)
+
+	search:
+		for i, w := range words {
+			switch q {
+			case "and", "or", "the":
+				break search
+			}
+
+			if q == strings.ToLower(w) {
+				fmt.Printf("#%-2d%s\n", i, w)
+				break queries
+			}
+		}
+	}
+
 }

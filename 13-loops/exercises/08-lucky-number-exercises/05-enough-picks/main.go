@@ -8,6 +8,14 @@
 
 package main
 
+import (
+	"fmt"
+	"math/rand"
+	"os"
+	"strconv"
+	"time"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Enough Picks
 //
@@ -45,5 +53,54 @@ package main
 //    between 0-15.
 // ---------------------------------------------------------
 
+const (
+	maxTurn = 5
+	usage   = `Welcome to the Lucky Number Game! 🍀
+
+The program will pick %d random numbers.
+Your mission is to guess one of those numbers.
+
+The greater your number is, harder it gets.
+
+Wanna play?
+`
+)
 func main() {
+	rand.Seed(time.Now().UnixNano())
+	args := os.Args[1:]
+
+	if len(args) != 1{
+		fmt.Printf(usage, maxTurn)
+		return
+	}
+
+	guess, err := strconv.Atoi(args[0])
+	if err != nil {
+		fmt.Println("Wrong number.")
+		return
+	}
+
+	if guess < 0 {
+		fmt.Println("Pick a positive number.")
+		return
+	}
+
+	for turn := 0; turn < maxTurn; turn++ {
+		var n int
+		if n < 11 {
+			n = rand.Intn(11)
+		} else {
+			n = rand.Intn(guess + 1)
+		}
+
+		if n != guess {
+			continue
+		}
+
+		fmt.Println("YOU WIN!")
+		return
+	}
+
+	fmt.Println("YOU LOSE!")
+
 }
