@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Number Sorter
 //
@@ -47,4 +53,29 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	args := os.Args[1:]
+	if len(args) == 0 || len(args) > 5 {
+		fmt.Println("Please give me up to 5 numbers.")
+		return
+	}
+
+	var nums []float64
+
+	for _, v := range args {
+		num, err := strconv.ParseFloat(v, 64)
+		if err == nil {
+			nums = append(nums, num)
+		}
+	}
+
+	for range nums {
+		for i, v := range nums {
+			if i < len(nums)-1 && v > nums[i+1] {
+				nums[i+1], nums[i] = nums[i], nums[i+1]
+			}
+		}
+	}
+
+	fmt.Println(nums)
+
 }
