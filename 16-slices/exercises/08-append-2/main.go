@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"time"
+
+	s "github.com/inancgumus/prettyslice"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Append #2
 //
@@ -46,4 +52,25 @@ package main
 // ---------------------------------------------------------
 
 func main() {
+	var (
+		now         = time.Now()
+		pizza       []string
+		graduations []int
+		departures  []time.Time
+		lights      []bool
+	)
+
+	pizza = append(pizza, "pepperoni", "onions", "extra", "cheese")
+	graduations = append(graduations, 1998, 2005, 2018)
+	departures = append(departures,
+		now,
+		now.Add(time.Hour*24),
+		now.Add(time.Hour*48))
+	lights = append(lights, true, false, true)
+
+	s.MaxPerLine = 2
+	s.Show("pizza", pizza)
+	s.Show("graduations", graduations)
+	s.Show("departures", departures)
+	s.Show("lights", lights)
 }

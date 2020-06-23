@@ -18,7 +18,7 @@ import (
 
 func main() {
 	s.PrintBacking = true
-	s.MaxPerLine = 30
+	s.MaxPerLine = 10
 	s.Width = 150
 
 	var nums []int

@@ -71,7 +71,13 @@ func main() {
 			digits[sec/10], digits[sec%10],
 		}
 
+		alarmed := sec%10 == 0
+
 		for line := range clock[0] {
+			if alarmed {
+				clock = alarm
+			}
+
 			for index, digit := range clock {
 				// colon blink
 				next := clock[index][line]

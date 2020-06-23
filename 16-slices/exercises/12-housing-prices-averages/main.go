@@ -8,6 +8,12 @@
 
 package main
 
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Housing Prices and Averages
 //
@@ -41,6 +47,68 @@ Istanbul,500,10,5,1000000`
 		separator = ","
 	)
 
-	// Solve this exercise by using your previous solution for
-	// the "Housing Prices" exercise.
+	var (
+		locations                  []string
+		sizes, beds, baths, prices []int
+	)
+	rows := strings.Split(data, "\n")
+	for _, row := range rows {
+		tmp := strings.Split(row, separator)
+
+		locations = append(locations, tmp[0])
+		num, _ := strconv.Atoi(tmp[1])
+
+		sizes = append(sizes, num)
+		num, _ = strconv.Atoi(tmp[2])
+
+		beds = append(beds, num)
+		num, _ = strconv.Atoi(tmp[3])
+
+		baths = append(baths, num)
+		num, _ = strconv.Atoi(tmp[4])
+		prices = append(prices, num)
+	}
+
+	for _, h := range strings.Split(header, separator) {
+		fmt.Printf("%-15s", h)
+	}
+	fmt.Printf("\n%s\n", strings.Repeat("=", 75))
+
+	for i := range rows {
+		fmt.Printf("%-15s", locations[i])
+		fmt.Printf("%-15d", sizes[i])
+		fmt.Printf("%-15d", beds[i])
+		fmt.Printf("%-15d", baths[i])
+		fmt.Printf("%-15d", prices[i])
+		fmt.Println()
+	}
+
+	var sum int
+	denom := float64(len(rows))
+	fmt.Printf("%-15s\n", strings.Repeat("=", 75))
+	fmt.Printf("%-15s", "")
+	for _, v := range sizes {
+		sum += v
+	}
+
+	sum = 0
+	fmt.Printf("%-15.2f", float64(sum)/denom)
+	for _, v := range beds {
+		sum += v
+	}
+
+	sum = 0
+	fmt.Printf("%-15.2f", float64(sum)/denom)
+	for _, v := range baths {
+		sum += v
+	}
+
+	sum = 0
+	fmt.Printf("%-15.2f", float64(sum)/denom)
+	for _, v := range prices {
+		sum += v
+	}
+	fmt.Printf("%-15.2f", float64(sum)/denom)
+
+	fmt.Println()
 }

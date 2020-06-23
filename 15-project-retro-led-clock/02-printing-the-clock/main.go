@@ -10,6 +10,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -99,9 +100,28 @@ func main() {
 		zero, one, two, three, four, five, six, seven, eight, nine,
 	}
 
-	for line := range digits[0] {
-		for digit := range digits {
-			fmt.Print(digits[digit][line], "  ")
+	now := time.Now()
+	hour, min, sec := now.Hour(), now.Minute(), now.Second()
+
+	separator := placeholder{
+		"   ",
+		" ░ ",
+		"   ",
+		" ░ ",
+		"   ",
+	}
+
+	clockDigit := [...]placeholder{
+		digits[hour/10], digits[hour%10],
+		separator,
+		digits[min/10], digits[min%10],
+		separator,
+		digits[sec/10], digits[sec%10],
+	}
+
+	for line := range clockDigit[0] {
+		for digit := range clockDigit {
+			fmt.Print(clockDigit[digit][line], "  ")
 		}
 		fmt.Println()
 	}
