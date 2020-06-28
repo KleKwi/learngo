@@ -79,11 +79,21 @@ func main() {
 	// ================================================
 	// #1: Make a new slice with the exact size needed.
 
-	_ = reqs // remove this when you start
-
-	size := 0 // you need to find the size.
+	l := len(reqs)
+	size := l / N
+	if l%N != 0 {
+		size++
+	}
 	daily := make([][]int, 0, size)
 
+	for N <= len(reqs) {
+		daily = append(daily, reqs[:N])
+		reqs = reqs[N:]
+	}
+
+	if len(reqs) > 0 {
+		daily = append(daily, reqs)
+	}
 	// ================================================
 
 	// ================================================
@@ -97,8 +107,6 @@ func main() {
 	//  [750, 250, 100]
 	// ]
 
-	_ = daily // remove this when you start
-
 	// ================================================
 	// #3: Print the results
 
@@ -106,9 +114,19 @@ func main() {
 	fmt.Printf("%-10s%-10s\n", "Day", "Requests")
 	fmt.Println(strings.Repeat("=", 20))
 
-	// Loop over the daily slice and its inner slices to find
-	// the daily totals and the grand total.
-	// ...
+	var grand int
+	for i, day := range daily {
+		var total int
 
+		for _, v := range day {
+			fmt.Printf("%-10d%-10d\n", i+1, v)
+			total += v
+		}
+
+		fmt.Printf("%9s %-10d\n", "TOTAL:", total)
+
+		grand += total
+	}
+	fmt.Printf("%9s %-10d\n", "GRAND:", grand)
 	// ================================================
 }

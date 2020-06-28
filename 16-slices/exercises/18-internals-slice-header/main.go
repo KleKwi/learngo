@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"runtime"
 	"runtime/debug"
+	"unsafe"
 )
 
 // ---------------------------------------------------------
@@ -86,6 +87,25 @@ func main() {
 	// 1. allocate an array with 10 million int elements
 	//    the array's size will be equal to ~80MB
 	//    hint: use the `size` constant above.
+	var array [size]int
+	report(("after declaring the array"))
+
+	array2 := array
+	report("after copying the array")
+
+	passArray(array)
+	slice1 := array[:]
+	slice2 := array[1e3:]
+	slice3 := array[1e3:1e4]
+	report("after slicings")
+	passSlice(slice3)
+
+	fmt.Println()
+	fmt.Printf("Array's size : %d bytes\n", unsafe.Sizeof(array))
+	fmt.Printf("Array2's size: %d bytes\n", unsafe.Sizeof(array2))
+	fmt.Printf("slice1's size: %d bytes\n", unsafe.Sizeof(slice1))
+	fmt.Printf("slice2's size: %d bytes\n", unsafe.Sizeof(slice2))
+	fmt.Printf("slice3's size: %d bytes\n", unsafe.Sizeof(slice3))
 
 	// 2. print the memory usage (use the report func).
 

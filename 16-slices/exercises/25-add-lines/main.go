@@ -78,7 +78,12 @@ func main() {
 	//
 	// ~~~ CHANGE THIS CODE ~~~
 	//
-	fix := lyric
+	fix := make([]string, len(lyric)+3)
+	cutpoint := []int{8, 10, 5}
+	for i, n := 0, 0; n < len(lyric); i++ {
+		n += copy(fix[n+i:], lyric[n:n+cutpoint[i]])
+		fix[n+i] = "\n"
+	}
 	//
 	// ===================================
 
