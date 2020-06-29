@@ -52,6 +52,7 @@ func main() {
 
 	var (
 		px, py int    // ball position
+		ppx, ppy int
 		vx, vy = 1, 1 // velocities
 
 		cell rune // current cell (for caching)
@@ -98,11 +99,8 @@ func main() {
 		}
 
 		// remove the previous ball
-		for y := range board[0] {
-			for x := range board {
-				board[x][y] = false
-			}
-		}
+		board[px][py], board[ppx][ppy] = true, false
+		ppx, ppy = px, py
 
 		// put the new ball
 		board[px][py] = true

@@ -51,6 +51,7 @@ func main() {
 
 		maxFrames = 1200
 		speed     = time.Second / 20
+		bufLen    = (width*2 + 1) * height
 	)
 
 	var (
@@ -67,7 +68,7 @@ func main() {
 	}
 
 	// create a drawing buffer
-	buf := make([]rune, 0, width*height)
+	buf := make([]rune, 0, bufLen)
 
 	// clear the screen once
 	screen.Clear()

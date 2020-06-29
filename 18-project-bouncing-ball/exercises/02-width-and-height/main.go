@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/inancgumus/screen"
+	"github.com/mattn/go-runewidth"
 )
 
 // ---------------------------------------------------------
@@ -71,9 +72,6 @@ import (
 
 func main() {
 	const (
-		width  = 50
-		height = 10
-
 		cellEmpty = ' '
 		cellBall  = '⚾'
 
@@ -84,8 +82,20 @@ func main() {
 		//
 		// *2 for extra spaces
 		// +1 for newlines
-		bufLen = (width*2 + 1) * height
 	)
+
+	// width, height, err := terminal.GetSize(int(os.Stdout.Fd()))
+	// if err != nil {
+	// 	fmt.Println(err)
+	// 	return
+	// }
+	width, height := screen.Size()
+
+	ballWidth := runewidth.RuneWidth(cellBall)
+	width /= ballWidth
+	height--
+
+	bufLen := (width*2 + 1) * height
 
 	var (
 		px, py int    // ball position
