@@ -8,6 +8,10 @@
 
 package main
 
+import (
+	"fmt"
+)
+
 // ---------------------------------------------------------
 // EXERCISE: Print the runes
 //
@@ -33,4 +37,18 @@ package main
 
 func main() {
 	const word = "console"
+
+	for _, w := range []rune(word) {
+		fmt.Printf("%c\n", w)
+		fmt.Printf("%5sdecimal: %d\n", "", w)
+		fmt.Printf("%5shex    : %x\n", "", w)
+		fmt.Printf("%5sbinary : %b\n", "", w)
+	}
+
+	fmt.Printf("with runes       : %s\n",
+		[]byte{'c', 'o', 'n', 's', 'o', 'l', 'e'})
+	fmt.Printf("with decimals    : %s\n",
+		[]byte{99, 111, 110, 115, 111, 108, 101})
+	fmt.Printf("with hexadecimals: %s\n",
+		[]byte{0x63, 0x6f, 0x6e, 0x73, 0x6f, 0x6c, 0x65})
 }
